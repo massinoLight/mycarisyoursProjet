@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bgapp"
+
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="184dp"
+        android:layout_height="101dp"
+        android:src="@mipmap/logo_round" />
+
+    <EditText
+        android:id="@+id/ed_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shapeemail"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:textColor="@color/Black"
+        android:textColorHighlight="@color/Black"
+        android:textColorHint="@color/Black" />
+
+    <EditText
+        android:id="@+id/ed_mdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shapeemail"
+        android:drawableLeft="@drawable/ic_lockmdp_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="Mot De Passe"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textColor="@color/Black"
+        android:textColorHighlight="@color/Black"
+        android:textColorHint="@color/Black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:buttonTint="@color/Black"
+            android:checked="true"
+            android:text="Remember Me"
+            android:textColor="@color/Black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@drawable/ic_lock_open_black_24dp"
+            android:drawablePadding="6dp"
+            android:padding="4dp"
+            android:text="Mdp Oublié"
+            android:textColor="@color/Black" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shapelogin"
+        android:padding="15dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="Se connecter"
+        android:textColor="@color/Black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shapesignup"
+        android:padding="15dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="S'enregister"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

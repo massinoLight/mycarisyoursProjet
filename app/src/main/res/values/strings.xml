@@ -1,0 +1,333 @@
+<resources>
+    <string name="app_name">MyCarisYours</string>
+    <string name="tab_text_1">Voitures</string>
+    <string name="tab_text_2">Vélo/MOTO</string>
+    <string name="tab_text_3">Utilitaire</string>
+    <string-array name="VIDE">
+        <item> </item>
+
+
+    </string-array>
+
+
+    <string-array name="marques">
+
+        <item>ALFA ROMEO</item>
+        <item>AUDI</item>
+        <item>BMW</item>
+        <item>CHEVROLET</item>
+        <item>CITROEN</item>
+        <item>DACIA</item>
+        <item>FIAT</item>
+        <item>FORD</item>
+        <item>HYUNDAI</item>
+        <item>JEEP</item>
+        <item>KIA</item>
+        <item>MINI</item>
+        <item>OPEL</item>
+        <item>PEUGEOT</item>
+        <item>RENAULT</item>
+        <item>SEAT</item>
+        <item>TOYOTA</item>
+        <item>WOLKSWAGEN</item>
+        <item>AUTRE</item>
+
+    </string-array>
+
+
+    <string-array name="PEUGEOT">
+        <item>2008</item>
+
+        <item>205</item>
+        <item>206</item>
+        <item>207</item>
+        <item>3008</item>
+        <item>307</item>
+        <item>4008</item>
+        <item>AUTRE</item>
+
+    </string-array>
+
+
+    <string-array name="WOLKSWAGEN">
+        <item>CADDY</item>
+        <item>GOLF</item>
+        <item>PASSAT</item>
+        <item>POLO</item>
+        <item>TIGUAN</item>
+        <item>AUTRE</item>
+
+
+    </string-array>
+
+
+
+
+    <string-array name="ALFAROMEO">
+        <item> </item>
+
+        <item>ALFA 147 </item>
+        <item>ALFA 33</item>
+        <item>SPIDER</item>
+        <item>AUTRE</item>
+
+
+    </string-array>
+
+    <string-array name="AUDI">
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
+        <item>A7</item>
+        <item>A8</item>
+        <item>Q2</item>
+        <item>Q3</item>
+        <item>Q5</item>
+        <item>Q7</item>
+        <item>R8</item>
+        <item>S1</item>
+
+        <item>S3</item>
+        <item>S4</item>
+        <item>S5</item>
+        <item>S6</item>
+        <item>S7</item>
+        <item>S8</item>
+        <item>TT</item>
+        <item>V8</item>
+        <item>AUTRE</item>
+    </string-array>
+
+
+
+    <string-array name="BMW">
+        <item>M2</item>
+        <item>M3</item>
+        <item>M4</item>
+        <item>M5</item>
+        <item>M6</item>
+        <item>SERIE 1</item>
+        <item>SERIE 2</item>
+        <item>SERIE 3</item>
+        <item>SERIE 4</item>
+        <item>SERIE 5</item>
+        <item>SERIE 6</item>
+        <item>SERIE 7</item>
+        <item>SERIE 8</item>
+        <item>X1</item>
+        <item>X2</item>
+        <item>X3</item>
+        <item>X4</item>
+        <item>X5</item>
+        <item>X6</item>
+        <item>X7</item>
+
+        <item>Z1</item>
+        <item>Z3</item>
+        <item>Z4</item>
+        <item>Z8</item>
+
+        <item>AUTRE</item>
+
+    </string-array>
+
+
+
+    <string-array name="CHEVROLET">
+        <item>ALETO</item>
+        <item>AVEO</item>
+        <item>CAMARO</item>
+        <item>CORVETTE</item>
+        <item>TRAX</item>
+        <item>VOLT</item>
+        <item>AUTRE</item>
+
+
+    </string-array>
+
+
+    <string-array name="CITROEN">
+        <item>C1</item>
+        <item>C2</item>
+        <item>C3</item>
+        <item>C3II</item>
+        <item>C3 III</item>
+        <item>C3 PICASSO</item>
+        <item>C4</item>
+        <item>C4 CACTUS</item>
+        <item>C4 PICASSO</item>
+        <item>C5</item>
+        <item>DS</item>
+        <item>DS3</item>
+        <item>DS4</item>
+        <item>DS5</item>
+        <item>DS7</item>
+        <item>JUMPER</item>
+        <item>TAGARA</item>
+        <item>ZX</item>
+        <item>AUTRE</item>
+
+    </string-array>
+    <string-array name="DACIA">
+        <item>DUSTER</item>
+        <item>LODGY</item>
+        <item>LOGAN</item>
+        <item>SANDERO</item>
+        <item>AUTRE</item>
+
+
+
+    </string-array>
+    <string-array name="FIAT">
+        <item>900</item>
+        <item>AGENTA</item>
+        <item>BRAVO</item>
+        <item>CROMA</item>
+        <item>PANDA</item>
+        <item>UNO</item>
+        <item>AUTRE</item>
+
+    </string-array>
+    <string-array name="FORD">
+        <item>ANGLIA</item>
+
+        <item>CORTINA</item>
+        <item>COUGAR</item>
+        <item>EDGE</item>
+        <item>ESCORT</item>
+        <item>FIESTA</item>
+        <item>FOCUS</item>
+        <item>KA</item>
+        <item>MANDEO</item>
+        <item>MUSTANG</item>
+        <item>PUMA</item>
+        <item>RANGER</item>
+        <item>SCORPIO</item>
+        <item>SIERRA</item>
+        <item>TRANSIT</item>
+        <item>AUTRE</item>
+
+    </string-array>
+    <string-array name="HYUNDAI">
+        <item>ACCENT</item>
+        <item>ATOZ</item>
+        <item>I10</item>
+        <item>I20</item>
+        <item>I30</item>
+        <item>I40</item>
+        <item>AUTRE</item>
+
+
+
+    </string-array>
+    <string-array name="JEEP">
+        <item>COMMANDER</item>
+        <item>PATRIOT</item>
+        <item>RENEGADE</item>
+        <item>WARENGER</item>
+        <item>WARENGER IV</item>
+        <item>AUTRE</item>
+
+
+    </string-array>
+
+
+    <string-array name="KIA">
+        <item>BESTA</item>
+        <item>CEED</item>
+        <item>NIRO</item>
+        <item>OPTIMA</item>
+        <item>PICANTO</item>
+        <item>RIO</item>
+        <item>SEPHIA</item>
+        <item>SHUMA</item>
+        <item>SORENTO</item>
+        <item>SPORTAGE</item>
+        <item>STINGER</item>
+        <item>STONIC</item>
+        <item>VENGA</item>
+        <item>AUTRE</item>
+
+
+    </string-array>
+    <string-array name="MINI">
+        <item>COUNTRYMAN</item>
+        <item>MINI</item>
+        <item>CLUBMAN</item>
+        <item>PACEMAN</item>
+
+        <item>AUTRE</item>
+
+    </string-array>
+    <string-array name="OPEL">
+        <item>ADAM</item>
+        <item>ANTARA</item>
+        <item>ASTRA</item>
+        <item>CABRIO</item>
+        <item>CALIBRA</item>
+        <item>CITY</item>
+        <item>CASCADA</item>
+        <item>COMMANDOR</item>
+        <item>CORSA</item>
+        <item>GT</item>
+        <item>OMEGA</item>
+        <item>ZAFIRA</item>
+        <item>AUTRE</item>
+    </string-array>
+
+    <string-array name="RENAULT">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+
+    </string-array>
+
+
+    <string-array name="SEAT">
+        <item>ALETA</item>
+        <item>AROSA</item>
+        <item>CORDOBA</item>
+        <item>EXEO</item>
+        <item>FURA</item>
+        <item>IBIZA</item>
+        <item>LEON</item>
+
+        <item>MALAGA</item>
+        <item>MARBELLA</item>
+        <item>RONDA</item>
+        <item>TARRACO</item>
+        <item>TOLEDO</item>
+        <item>AUTRE</item>
+
+    </string-array>
+
+
+    <string-array name="TOYOTA">
+        <item>AURIS</item>
+        <item>CARINA</item>
+        <item>COROLLA</item>
+        <item>COROLLA VERSO</item>
+        <item>COROLLA X</item>
+        <item>HI LUX</item>
+        <item>LANDCRUISER</item>
+        <item>LEXUS</item>
+        <item>RAV4</item>
+        <item>SUPRA</item>
+        <item>TERCEL</item>
+        <item>VERSO</item>
+        <item>YARIS</item>
+        <item>YARIS II</item>
+        <item>YARIS III</item>
+        <item>AUTRE</item>
+
+    </string-array>
+
+
+</resources>

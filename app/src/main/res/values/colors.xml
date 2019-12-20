@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <color name="colorPrimary">#e41b1c1e</color>
+    <color name="colorADEL">#bdb9b5</color>
+    <color name="colorPrimaryDark">#e41b1c1e</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="signupColor">#066e8a</color>
+    <color name="vertColor">#04ec74</color>
+    <color name="marronColor">#47714321</color>
+    <color name="green">#47C3F8C1</color>
+    <color name="transparent">#47FFFDFC</color>
+
+</resources>

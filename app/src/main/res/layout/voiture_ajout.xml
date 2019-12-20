@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="408dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="20dp"
+        android:text="AJOUTER VOTRE VOITURE"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="68dp"
+        android:text="MARQUE"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginBottom="425dp"
+        android:text="MODÉLE"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="56dp"
+        android:text="ÉNERGIE"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Spinner
+        android:id="@+id/spinnerMarque"
+        android:layout_width="175dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="59dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Spinner
+        android:id="@+id/spinnerModel"
+        android:layout_width="175dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="59dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMarque" />
+
+    <CheckBox
+        android:id="@+id/essence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="67dp"
+        android:buttonTint="#FD0F0000"
+        android:text="Essence"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerModel" />
+
+    <CheckBox
+        android:id="@+id/diesel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:buttonTint="#FD0F0000"
+        android:text="Diesel"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/essence"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerModel" />
+
+    <CheckBox
+        android:id="@+id/electrique"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="29dp"
+        android:buttonTint="#FD0F0000"
+        android:drawableTint="#FD0C0B0B"
+        android:text="Électrique"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/diesel"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerModel" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/precedent"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="131dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginBottom="153dp"
+        android:text="Précedent"
+        android:textColor="#FDF3F7F3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#BF2B2E42"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/green"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/suivant"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="131dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="153dp"
+        android:text="Suivant"
+        android:textColor="#F7F6FA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#BF2B2E42"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/green"
+        app:strokeWidth="2dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
