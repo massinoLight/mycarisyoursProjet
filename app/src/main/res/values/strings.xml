@@ -12,6 +12,7 @@
 
     <string-array name="marques">
 
+        <item> </item>
         <item>ALFA ROMEO</item>
         <item>AUDI</item>
         <item>BMW</item>
@@ -36,8 +37,9 @@
 
 
     <string-array name="PEUGEOT">
-        <item>2008</item>
 
+        <item> </item>
+        <item>2008</item>
         <item>205</item>
         <item>206</item>
         <item>207</item>
@@ -49,7 +51,35 @@
     </string-array>
 
 
+    <string-array name="place">
+
+        <item> </item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+
+
+    </string-array>
+
+
+    <string-array name="porte">
+
+        <item> </item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+
+    </string-array>
+
+
     <string-array name="WOLKSWAGEN">
+        <item> </item>
         <item>CADDY</item>
         <item>GOLF</item>
         <item>PASSAT</item>
@@ -59,8 +89,6 @@
 
 
     </string-array>
-
-
 
 
     <string-array name="ALFAROMEO">
@@ -75,6 +103,7 @@
     </string-array>
 
     <string-array name="AUDI">
+        <item> </item>
         <item>A1</item>
         <item>A2</item>
         <item>A3</item>
@@ -102,8 +131,8 @@
     </string-array>
 
 
-
     <string-array name="BMW">
+        <item> </item>
         <item>M2</item>
         <item>M3</item>
         <item>M4</item>
@@ -135,8 +164,8 @@
     </string-array>
 
 
-
     <string-array name="CHEVROLET">
+        <item> </item>
         <item>ALETO</item>
         <item>AVEO</item>
         <item>CAMARO</item>
@@ -150,6 +179,7 @@
 
 
     <string-array name="CITROEN">
+        <item> </item>
         <item>C1</item>
         <item>C2</item>
         <item>C3</item>
@@ -171,7 +201,9 @@
         <item>AUTRE</item>
 
     </string-array>
+
     <string-array name="DACIA">
+        <item> </item>
         <item>DUSTER</item>
         <item>LODGY</item>
         <item>LOGAN</item>
@@ -179,9 +211,9 @@
         <item>AUTRE</item>
 
 
-
     </string-array>
     <string-array name="FIAT">
+        <item> </item>
         <item>900</item>
         <item>AGENTA</item>
         <item>BRAVO</item>
@@ -192,8 +224,8 @@
 
     </string-array>
     <string-array name="FORD">
+        <item> </item>
         <item>ANGLIA</item>
-
         <item>CORTINA</item>
         <item>COUGAR</item>
         <item>EDGE</item>
@@ -221,9 +253,9 @@
         <item>AUTRE</item>
 
 
-
     </string-array>
     <string-array name="JEEP">
+        <item> </item>
         <item>COMMANDER</item>
         <item>PATRIOT</item>
         <item>RENEGADE</item>
@@ -236,6 +268,7 @@
 
 
     <string-array name="KIA">
+        <item> </item>
         <item>BESTA</item>
         <item>CEED</item>
         <item>NIRO</item>
@@ -254,6 +287,7 @@
 
     </string-array>
     <string-array name="MINI">
+        <item> </item>
         <item>COUNTRYMAN</item>
         <item>MINI</item>
         <item>CLUBMAN</item>
@@ -263,6 +297,7 @@
 
     </string-array>
     <string-array name="OPEL">
+        <item> </item>
         <item>ADAM</item>
         <item>ANTARA</item>
         <item>ASTRA</item>
@@ -280,17 +315,37 @@
 
     <string-array name="RENAULT">
         <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
+        <item>CAPTUR</item>
+        <item>CARAVELLE</item>
+        <item>CLIO</item>
+        <item>ESPACE</item>
+        <item>FLUENCE</item>
+        <item>FUEGO</item>
+        <item>KANGO</item>
+        <item>LAGUNA</item>
+        <item>LATITUDE</item>
+        <item>MASTER</item>
+        <item>MEGANE</item>
+        <item>MODUS</item>
+        <item>R10</item>
+        <item>R11</item>
+        <item>R12</item>
+        <item>R14</item>
+        <item>R15</item>
+        <item>R16</item>
+        <item>SENIC</item>
+        <item>SPIDER</item>
+        <item>TRAFIC</item>
+        <item>TWINGO</item>
+        <item>ZOE</item>
+        <item>AUTRE</item>
 
 
     </string-array>
 
 
     <string-array name="SEAT">
+        <item> </item>
         <item>ALETA</item>
         <item>AROSA</item>
         <item>CORDOBA</item>
@@ -310,6 +365,7 @@
 
 
     <string-array name="TOYOTA">
+        <item> </item>
         <item>AURIS</item>
         <item>CARINA</item>
         <item>COROLLA</item>

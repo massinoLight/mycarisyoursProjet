@@ -7,15 +7,16 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import kotlinx.android.synthetic.main.voiture_ajout.*
-import org.jetbrains.anko.toast
 
 
 class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
+
+    var LaMarque=""
+    var LeModele=""
+    var Lenergie=""
+    var LesVitesse=""
 
 
 
@@ -45,17 +46,87 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
 
 
 
+/**
+ *
+ * selection de la boite a vitesses
+ * */
+        val automatique:CheckBox = findViewById(R.id.pasannimeaux)
+        val manuelle:CheckBox=findViewById(R.id.manuelle)
+
+        automatique.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                manuelle.setChecked(false)
+                LesVitesse="automatique"
+
+            }
+        }
+
+
+        manuelle.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                automatique.setChecked(false)
+                LesVitesse="manuelle"
+
+            }
+        }
+
+        /**
+         * selection de l'energie du moteur
+         * */
+
+        val essence:CheckBox = findViewById(R.id.essence)
+        val diesel:CheckBox=findViewById(R.id.diesel)
+        val electrique:CheckBox=findViewById(R.id.electrique)
+
+        essence.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                diesel.setChecked(false)
+                if(electrique.isChecked){
+                    Lenergie="hybride/essence/electrique"
+                }
+                else
+                {
+                    Lenergie="essence"
+                }
+
+
+            }
+        }
+
+
+        diesel.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                essence.setChecked(false)
+
+                if(electrique.isChecked){
+                    Lenergie="hybride/diesel/electrique"
+                }
+                else
+                {
+                    Lenergie="diesel"
+                }
+
+
+
+            }
+        }
+
+/***
+ *
+ * les  boutons suivant et précedent
+ * **/
 
         suivant.setOnClickListener {
 
-            val intent2 = Intent(this, SigupActivity::class.java)
+            val intent2 = Intent(this, AjoutVoitureSuitActivity::class.java)
 
             startActivity(intent2)
+            finish()
         }
 
         precedent.setOnClickListener {
 
-            val intent2 = Intent(this, ChoixActivity::class.java)
+            val intent2 = Intent(this, AccueilActivity::class.java)
 
             startActivity(intent2)
             finish()
@@ -69,39 +140,49 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-        var laMarque:String= parent?.getItemAtPosition(position).toString()
+        if (parent != null) {
+            if(parent.getId() == R.id.spinnerMarque)
+            {
 
-        /**
-         * la liste pour choisir le modéle qui va s'adapter selon la marque
-         * */
+                /**
+                 * la liste pour choisir le modéle qui va s'adapter selon la marque
+                 * */
 
-        val model : Spinner =findViewById(R.id.spinnerModel)
 
-        val  modelAdapter = when(laMarque) {
-            "WOLKSWAGEN" -> ArrayAdapter.createFromResource(this,R.array.WOLKSWAGEN,android.R.layout.simple_spinner_item)
-            "PEUGEOT" -> ArrayAdapter.createFromResource(this,R.array.PEUGEOT,android.R.layout.simple_spinner_item)
-            "AUDI" -> ArrayAdapter.createFromResource(this,R.array.AUDI,android.R.layout.simple_spinner_item)
-            "BMW" -> ArrayAdapter.createFromResource(this,R.array.BMW,android.R.layout.simple_spinner_item)
-            "CHEVROLET" -> ArrayAdapter.createFromResource(this,R.array.CHEVROLET,android.R.layout.simple_spinner_item)
-            "ALFA ROMEO" -> ArrayAdapter.createFromResource(this,R.array.ALFAROMEO,android.R.layout.simple_spinner_item)
-            "CITROEN" -> ArrayAdapter.createFromResource(this,R.array.CITROEN,android.R.layout.simple_spinner_item)
-            "DACIA" -> ArrayAdapter.createFromResource(this,R.array.DACIA,android.R.layout.simple_spinner_item)
-            "FIAT" -> ArrayAdapter.createFromResource(this,R.array.FIAT,android.R.layout.simple_spinner_item)
-            "FORD" -> ArrayAdapter.createFromResource(this,R.array.FORD,android.R.layout.simple_spinner_item)
-            "HYUNDAI" -> ArrayAdapter.createFromResource(this,R.array.HYUNDAI,android.R.layout.simple_spinner_item)
-            "JEEP" -> ArrayAdapter.createFromResource(this,R.array.JEEP,android.R.layout.simple_spinner_item)
-            "KIA" -> ArrayAdapter.createFromResource(this,R.array.KIA,android.R.layout.simple_spinner_item)
-            "MINI" -> ArrayAdapter.createFromResource(this,R.array.MINI,android.R.layout.simple_spinner_item)
-            "OPEL" -> ArrayAdapter.createFromResource(this,R.array.OPEL,android.R.layout.simple_spinner_item)
-            "SEAT" -> ArrayAdapter.createFromResource(this,R.array.SEAT,android.R.layout.simple_spinner_item)
-            "TOYOTA" -> ArrayAdapter.createFromResource(this,R.array.TOYOTA,android.R.layout.simple_spinner_item)
+                LaMarque= parent?.getItemAtPosition(position).toString()
+                val  modelAdapter = when(LaMarque) {
+                    "WOLKSWAGEN" -> ArrayAdapter.createFromResource(this,R.array.WOLKSWAGEN,android.R.layout.simple_spinner_item)
+                    "PEUGEOT" -> ArrayAdapter.createFromResource(this,R.array.PEUGEOT,android.R.layout.simple_spinner_item)
+                    "AUDI" -> ArrayAdapter.createFromResource(this,R.array.AUDI,android.R.layout.simple_spinner_item)
+                    "BMW" -> ArrayAdapter.createFromResource(this,R.array.BMW,android.R.layout.simple_spinner_item)
+                    "CHEVROLET" -> ArrayAdapter.createFromResource(this,R.array.CHEVROLET,android.R.layout.simple_spinner_item)
+                    "ALFA ROMEO" -> ArrayAdapter.createFromResource(this,R.array.ALFAROMEO,android.R.layout.simple_spinner_item)
+                    "CITROEN" -> ArrayAdapter.createFromResource(this,R.array.CITROEN,android.R.layout.simple_spinner_item)
+                    "DACIA" -> ArrayAdapter.createFromResource(this,R.array.DACIA,android.R.layout.simple_spinner_item)
+                    "FIAT" -> ArrayAdapter.createFromResource(this,R.array.FIAT,android.R.layout.simple_spinner_item)
+                    "FORD" -> ArrayAdapter.createFromResource(this,R.array.FORD,android.R.layout.simple_spinner_item)
+                    "HYUNDAI" -> ArrayAdapter.createFromResource(this,R.array.HYUNDAI,android.R.layout.simple_spinner_item)
+                    "JEEP" -> ArrayAdapter.createFromResource(this,R.array.JEEP,android.R.layout.simple_spinner_item)
+                    "KIA" -> ArrayAdapter.createFromResource(this,R.array.KIA,android.R.layout.simple_spinner_item)
+                    "MINI" -> ArrayAdapter.createFromResource(this,R.array.MINI,android.R.layout.simple_spinner_item)
+                    "OPEL" -> ArrayAdapter.createFromResource(this,R.array.OPEL,android.R.layout.simple_spinner_item)
+                    "SEAT" -> ArrayAdapter.createFromResource(this,R.array.SEAT,android.R.layout.simple_spinner_item)
+                    "TOYOTA" -> ArrayAdapter.createFromResource(this,R.array.TOYOTA,android.R.layout.simple_spinner_item)
 
-            else -> ArrayAdapter.createFromResource(this,R.array.VIDE,android.R.layout.simple_spinner_item)
+                    else -> ArrayAdapter.createFromResource(this,R.array.VIDE,android.R.layout.simple_spinner_item)
+                }
+                val model : Spinner =findViewById(R.id.spinnerModel)
+
+                modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                model.setAdapter(modelAdapter)
+
+
+            }
+            else if(parent.getId() == R.id.spinnerModel)
+            {
+                LeModele= parent?.getItemAtPosition(position).toString()
+            }
         }
-
-        modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        model.setAdapter(modelAdapter)
-
 
 
     }
