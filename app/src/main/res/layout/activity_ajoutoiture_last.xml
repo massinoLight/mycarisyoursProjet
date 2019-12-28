@@ -15,22 +15,26 @@
 
 
 
+
     <EditText
         android:id="@+id/imatriculation"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="1"
+        android:layout_height="70dp"
+
         android:ems="10"
         android:background="@drawable/shapdescription"
         android:drawableLeft="@drawable/ic_directions_car_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="Imatriculation"
+        android:hint="Imatriculation: FAB123CD75"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textColor="@color/Black"
         android:textColorHighlight="@color/Black"
         android:textColorHint="@color/Black"
         />
+
+
+
 
     <TextView
         android:id="@+id/textView"
@@ -43,12 +47,13 @@
 
 
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="142dp"
-        android:layout_weight="8"
+        android:layout_width="345dp"
+        android:layout_height="100dp"
+
         android:background="@drawable/lesbordures"
         android:columnCount="2"
         android:rowCount="2">
+
         <TextView
             android:id="@+id/ladateDETV"
             android:layout_width="216dp"
@@ -64,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="DATE de " />
+            android:text=" du " />
 
         <TextView
             android:id="@+id/ladateATV"
@@ -81,21 +86,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="DATE à " />
+            android:text=" AU " />
 
 
     </GridLayout>
 
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="344dp"
-        android:layout_height="79dp"
-        android:text="PLUS QU'UNE ETAPE"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/adresse"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
 
+        android:ems="10"
+        android:background="@drawable/shapdescription"
+        android:drawableLeft="@drawable/ic_add_location_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="votre adresse"
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textColor="@color/Black"
+        android:textColorHighlight="@color/Black"
+        android:textColorHint="@color/Black"
+        />
 
 
     <LinearLayout
@@ -139,6 +151,8 @@
 
 
     </LinearLayout>
+
+
 
 
 </LinearLayout>

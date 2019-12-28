@@ -9,14 +9,47 @@
     tools:context=".MainActivity">
 
 
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lesbordures"
+            android:columnCount="2"
+            android:rowCount="2">
 
 
-        <ImageView
-            android:id="@+id/image_view"
-            android:src="@drawable/ic_image_black_24dp"
-            android:scaleType="centerCrop"
-            android:layout_width="400dp"
-            android:layout_height="400dp" />
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/image_view2"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/image_view3"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/image_view4"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp" />
+
+
+        </GridLayout>
+
+
+
 
         <!--Button to open camera-->
         <Button
@@ -24,6 +57,55 @@
             android:text="Ajouter photo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
+
+
+        <LinearLayout
+            android:layout_width="328dp"
+            android:layout_height="122dp"
+            android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/precedent"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="131dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginBottom="102dp"
+                    android:text="Précedent"
+                    android:textColor="#FDF3F7F3"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#BF2B2E42"
+                    app:cornerRadius="8dp"
+                    app:rippleColor="#33AAAAAA"
+                    app:strokeColor="@color/green"
+                    app:strokeWidth="2dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/suivant"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="131dp"
+                    android:layout_height="49dp"
+
+                    android:text="Suivant"
+                    android:textColor="#F7F6FA"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#BF2B2E42"
+                    app:cornerRadius="8dp"
+                    app:rippleColor="#33AAAAAA"
+                    app:strokeColor="@color/green"
+                    app:strokeWidth="2dp" />
+
+
+        </LinearLayout>
+
+
+
+
 
 
 

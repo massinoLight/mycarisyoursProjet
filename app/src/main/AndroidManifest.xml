@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mycarisyours">
-
-    <!--permission pour acceder a internet-->
+    <!-- permission pour acceder a internet -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!--les permissions pour la camera et pour le stockage extern-->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- les permissions pour la camera et pour le stockage extern -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AjouterPhotoActivity"></activity>
+        <activity android:name=".ConfirmerActivity"></activity>
+        <activity android:name=".DebutActivity" />
+        <activity android:name=".AjouterPhotoActivity" />
         <activity android:name=".AjoutoitureLastActivity" />
         <activity android:name=".AjoutVoitureSuitActivity" />
         <activity

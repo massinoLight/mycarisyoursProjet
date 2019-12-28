@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DebutActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="165dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="131dp"
+        android:layout_marginEnd="109dp"
+        android:src="@mipmap/debut_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="42dp"
+        android:text="Dépot de votre vehicule "
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/letext"
+        android:layout_width="317dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="53dp"
+        android:text="pour proposer votre vehicule a la location suivez les étapes suivantes petit a petit"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/Confirmer"
+        android:layout_width="157dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="153dp"
+        android:layout_marginBottom="132dp"
+        android:background="#A4FFEB3B"
+        android:text="continuer"
+        android:textColor="#050505"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/letext" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

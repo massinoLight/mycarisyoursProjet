@@ -1,6 +1,7 @@
 package com.example.mycarisyours
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
@@ -11,21 +12,54 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_ajouter_photo.*
+import org.jetbrains.anko.toast
+import java.time.LocalDate
+import java.util.*
 
 class AjouterPhotoActivity : AppCompatActivity() {
 
     private val PERMISSION_CODE = 1000;
     private val IMAGE_CAPTURE_CODE = 1001
+    private var NB_PHOTO=5
     var image_uri: Uri? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ajouter_photo)
 
-        //button click
+
+
+        //page 1
+        val marque = intent.getStringExtra(ConfirmerActivity.EXTRA_MARQUE)
+        val modele = intent.getStringExtra(ConfirmerActivity.EXTRA_MODÉLE)
+        val energie = intent.getStringExtra(ConfirmerActivity.EXTRA_ENERGIE)
+        val vitesse = intent.getStringExtra(ConfirmerActivity.EXTRA_VITESSE)
+
+        //page 2
+        val description = intent.getStringExtra(ConfirmerActivity.EXTRA_DESCRIPTION)
+        val nbplaces = intent.getStringExtra(ConfirmerActivity.EXTRA_PLACES)
+        val nbportes = intent.getStringExtra(ConfirmerActivity.EXTRA_PORTES)
+        val fumeur = intent.getStringExtra(ConfirmerActivity.EXTRA_FUMEUR)
+        val animeaux = intent.getStringExtra(ConfirmerActivity.EXTRA_ANIMEAUX)
+
+        //page 3
+        val matricule = intent.getStringExtra(ConfirmerActivity.EXTRA_MATRICULE)
+        val datedebut = intent.getSerializableExtra(ConfirmerActivity.EXTRA_DATEDEBUT) as LocalDate
+        val datefin = intent.getSerializableExtra(ConfirmerActivity.EXTRA_DATEFIN) as LocalDate
+
+
+
+
+        //le bouton pour ouvrir la camera
         capture_btn.setOnClickListener {
-            //if system os is Marshmallow or Above, we need to request runtime permission
+            /***
+             * on verifie a chaque fois que les permissions sont accordées
+             * dans le cas ou l'utilisateur la retire par erreur apres l'instalation
+             * pour ne pas faire cracher l'applicaton
+             * **/
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (checkSelfPermission(Manifest.permission.CAMERA)
                     == PackageManager.PERMISSION_DENIED ||
@@ -37,15 +71,54 @@ class AjouterPhotoActivity : AppCompatActivity() {
                     requestPermissions(permission, PERMISSION_CODE)
                 }
                 else{
-                    //permission already granted
+
                     openCamera()
+                    NB_PHOTO--
                 }
             }
             else{
-                //system os is < marshmallow
+              //dans le cas des anciens telephones <marshmallo
                 openCamera()
+                NB_PHOTO--
             }
         }
+
+
+        suivant.setOnClickListener {
+
+            val intent2 = Intent(this, ConfirmerActivity::class.java)
+
+            intent2.putExtra(ConfirmerActivity.EXTRA_MARQUE,marque )
+            intent2.putExtra(ConfirmerActivity.EXTRA_MODÉLE,modele )
+            intent2.putExtra(ConfirmerActivity.EXTRA_ENERGIE,energie )
+            intent2.putExtra(ConfirmerActivity.EXTRA_VITESSE,vitesse )
+            intent2.putExtra(ConfirmerActivity.EXTRA_DESCRIPTION,description )
+            intent2.putExtra(ConfirmerActivity.EXTRA_PLACES, nbplaces)
+            intent2.putExtra(ConfirmerActivity.EXTRA_PORTES,nbportes )
+            intent2.putExtra(ConfirmerActivity.EXTRA_FUMEUR, fumeur)
+            intent2.putExtra(ConfirmerActivity.EXTRA_ANIMEAUX, animeaux)
+            intent2.putExtra(ConfirmerActivity.EXTRA_MATRICULE,matricule )
+            intent2.putExtra(ConfirmerActivity.EXTRA_DATEDEBUT,datedebut )
+            intent2.putExtra(ConfirmerActivity.EXTRA_DATEFIN,datefin )
+            //intent2.putExtra("EXTRA_PHOTO",image_uri )
+            intent2.putExtra("EXTRA_CONFIRMER",true )
+
+            startActivity(intent2)
+        }
+
+
+        precedent.setOnClickListener {
+
+            val intent2 = Intent(this, AjoutoitureLastActivity::class.java)
+
+            startActivity(intent2)
+            finish()
+
+
+        }
+
+
+
     }
 
     private fun openCamera() {
@@ -53,7 +126,8 @@ class AjouterPhotoActivity : AppCompatActivity() {
         values.put(MediaStore.Images.Media.TITLE, "New Picture")
         values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
         image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-        //camera intent
+
+
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
@@ -61,7 +135,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        //called when user presses ALLOW or DENY from Permission Request Popup
+
         when(requestCode){
             PERMISSION_CODE -> {
                 if (grantResults.size > 0 && grantResults[0] ==
@@ -70,18 +144,39 @@ class AjouterPhotoActivity : AppCompatActivity() {
                     openCamera()
                 }
                 else{
-                    //permission from popup was denied
+
                     Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        //called when image was captured from camera intent
+
         if (resultCode == Activity.RESULT_OK){
-            //set image captured to image view
-            image_view.setImageURI(image_uri)
+
+            if (NB_PHOTO!=0){
+
+               when(NB_PHOTO) {
+
+                    1 ->image_view.setImageURI(image_uri)
+                    2 ->image_view2.setImageURI(image_uri)
+                    3 ->image_view3.setImageURI(image_uri)
+                    4 ->image_view4.setImageURI(image_uri)
+
+                    else ->toast("4 photos suffisent largement ")
+                }
+
+            }
+            else
+            {
+                toast("4 photos suffisent largement ")
+            }
+
+
+
+
         }
     }
 }

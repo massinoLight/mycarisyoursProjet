@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+
 import kotlinx.android.synthetic.main.voiture_ajout.*
+import org.jetbrains.anko.toast
 
 
 class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
@@ -16,18 +18,11 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
     var LaMarque=""
     var LeModele=""
     var Lenergie=""
-    var LesVitesse=""
+    var LesVitesses=""
 
 
 
-    companion object {
-        const val EXTRA_VALIDER = "AjouterPersonne.valider"
-        const val EXTRA_NOM = "AjouterPersonne.nom"
-        const val EXTRA_EMAIL = "AjouterPersonne.email"
-        const val EXTRA_TEL = "AjouterPersonne.tel"
-        const val EXTRA_FAXE = "AjouterPersonne.fixe"
-        const val EXTRA_BATERIE = "AjouterPersonne.Labaterie"
-    }
+
 
     var IMAGE:Bitmap?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +51,7 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
         automatique.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 manuelle.setChecked(false)
-                LesVitesse="automatique"
+                LesVitesses="automatique"
 
             }
         }
@@ -65,7 +60,7 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
         manuelle.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 automatique.setChecked(false)
-                LesVitesse="manuelle"
+                LesVitesses="manuelle"
 
             }
         }
@@ -118,10 +113,28 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
 
         suivant.setOnClickListener {
 
-            val intent2 = Intent(this, AjoutVoitureSuitActivity::class.java)
+            if ((LaMarque=="")||(LeModele=="")||(Lenergie=="")||(LesVitesses=="")){
 
-            startActivity(intent2)
-            finish()
+                toast("vous avez oublié certaines informations")
+
+            }else
+            {
+                val intent2 = Intent(this, AjoutVoitureSuitActivity::class.java)
+
+
+
+
+                intent2.putExtra(ConfirmerActivity.EXTRA_MARQUE,LaMarque )
+                intent2.putExtra(ConfirmerActivity.EXTRA_MODÉLE,LeModele )
+                intent2.putExtra(ConfirmerActivity.EXTRA_ENERGIE,Lenergie )
+                intent2.putExtra(ConfirmerActivity.EXTRA_VITESSE,LesVitesses )
+
+
+                startActivity(intent2)
+                finish()
+
+            }
+
         }
 
         precedent.setOnClickListener {
@@ -175,12 +188,14 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
 
                 modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 model.setAdapter(modelAdapter)
+                model.setOnItemSelectedListener(this)
 
 
             }
             else if(parent.getId() == R.id.spinnerModel)
             {
                 LeModele= parent?.getItemAtPosition(position).toString()
+
             }
         }
 

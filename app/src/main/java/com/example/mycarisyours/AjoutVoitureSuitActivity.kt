@@ -9,29 +9,32 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.*
+import org.jetbrains.anko.toast
 
 
 class AjoutVoitureSuitActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
 
 
-    var description=""
+    var Description=""
     var nbPlaces=""
     var nbPortes=""
     var cigarette=""
     var toutou=""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ajout_voiture_suit)
 
-        val desc: EditText = findViewById(R.id.description)
 
-        desc.setOnClickListener{
-            desc.getText().clear()
+        val marque = intent.getStringExtra(ConfirmerActivity.EXTRA_MARQUE)
+        val modele = intent.getStringExtra(ConfirmerActivity.EXTRA_MODÉLE)
+        val energie = intent.getStringExtra(ConfirmerActivity.EXTRA_ENERGIE)
+        val vitesse = intent.getStringExtra(ConfirmerActivity.EXTRA_VITESSE)
 
-            //description=desc.getText().toString()
 
-        }
+
+
 
 
         //le spinner de nombre de places
@@ -114,9 +117,35 @@ class AjoutVoitureSuitActivity : AppCompatActivity() , AdapterView.OnItemSelecte
 
         suivant.setOnClickListener {
 
-            val intent2 = Intent(this, AjoutoitureLastActivity::class.java)
 
-            startActivity(intent2)
+            Description=description.getText().toString()
+
+            if ((nbPlaces=="")||(nbPortes=="")||(cigarette=="")||(toutou=="")){
+
+                toast("vous avez oublié certaines informations")
+
+            }else
+            {
+
+                val intent2 = Intent(this, AjoutoitureLastActivity::class.java)
+
+                intent2.putExtra(ConfirmerActivity.EXTRA_MARQUE,marque )
+                intent2.putExtra(ConfirmerActivity.EXTRA_MODÉLE,modele )
+                intent2.putExtra(ConfirmerActivity.EXTRA_ENERGIE,energie )
+                intent2.putExtra(ConfirmerActivity.EXTRA_VITESSE,vitesse )
+                intent2.putExtra(ConfirmerActivity.EXTRA_DESCRIPTION,Description )
+                intent2.putExtra(ConfirmerActivity.EXTRA_PLACES, nbPlaces)
+                intent2.putExtra(ConfirmerActivity.EXTRA_PORTES,nbPortes )
+                intent2.putExtra(ConfirmerActivity.EXTRA_FUMEUR, cigarette)
+                intent2.putExtra(ConfirmerActivity.EXTRA_ANIMEAUX, toutou)
+
+
+
+                startActivity(intent2)
+
+            }
+
+
         }
 
         precedent.setOnClickListener {

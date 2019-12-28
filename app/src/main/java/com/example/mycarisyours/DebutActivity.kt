@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_debut.*
-import org.jetbrains.anko.startActivityForResult
 
 class DebutActivity : AppCompatActivity() {
 
@@ -13,15 +12,11 @@ class DebutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_debut)
 
         Confirmer.setOnClickListener {
-
-            startActivityForResult<AjouterVoitureActivity>(1)
-
-
-            
+              val intent2 = Intent(this, AjouterVoitureActivity::class.java)
+                startActivity(intent2)
+                finish()
 
         }
-
-
 
     }
 }
