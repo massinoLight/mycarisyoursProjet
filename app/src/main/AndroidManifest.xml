@@ -14,13 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConfirmerActivity"></activity>
-        <activity android:name=".DebutActivity" />
-        <activity android:name=".AjouterPhotoActivity" />
-        <activity android:name=".AjoutoitureLastActivity" />
-        <activity android:name=".AjoutVoitureSuitActivity" />
+        <activity android:name=".activites.ConfirmerActivity"></activity>
+        <activity android:name=".activites.DebutActivity" />
+        <activity android:name=".activites.AjouterPhotoActivity" />
+        <activity android:name=".activites.AjoutoitureLastActivity" />
+        <activity android:name=".activites.AjoutVoitureSuitActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activites.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -29,11 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AccueilActivity" />
-        <activity android:name=".SigupActivity" />
-        <activity android:name=".MapActivity" />
-        <activity android:name=".ChoixActivity" />
-        <activity android:name=".AjouterVoitureActivity" />
+        <activity android:name=".activites.AccueilActivity" />
+        <activity android:name=".activites.SigupActivity" />
+        <activity android:name=".activites.MapActivity" />
+        <activity android:name=".activites.ChoixActivity" />
+        <activity android:name=".activites.AjouterVoitureActivity" />
     </application>
 
 </manifest>

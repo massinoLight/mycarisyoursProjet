@@ -1,4 +1,4 @@
-package com.example.mycarisyours
+package com.example.mycarisyours.activites
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_ajouter_photo.*
 import org.jetbrains.anko.toast
 import java.time.LocalDate
 import java.util.*
+import com.example.mycarisyours.R
+
 
 class AjouterPhotoActivity : AppCompatActivity() {
 
@@ -25,12 +27,19 @@ class AjouterPhotoActivity : AppCompatActivity() {
     private var NB_PHOTO=5
     var image_uri: Uri? = null
 
+
+
+    //var lesphotos = Array<Uri?>(5){ i->null}
+
+
+    //var lechemiDesPhotos = mutableListOf<String?>()
+
+     var lechemiDesPhotos = ArrayList<String?>()
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ajouter_photo)
-
-
 
         //page 1
         val marque = intent.getStringExtra(ConfirmerActivity.EXTRA_MARQUE)
@@ -100,8 +109,10 @@ class AjouterPhotoActivity : AppCompatActivity() {
             intent2.putExtra(ConfirmerActivity.EXTRA_MATRICULE,matricule )
             intent2.putExtra(ConfirmerActivity.EXTRA_DATEDEBUT,datedebut )
             intent2.putExtra(ConfirmerActivity.EXTRA_DATEFIN,datefin )
-            //intent2.putExtra("EXTRA_PHOTO",image_uri )
-            intent2.putExtra("EXTRA_CONFIRMER",true )
+           // intent2.putExtra(ConfirmerActivity.EXTRA_PHOTOS,lesphotos)
+            intent2.putStringArrayListExtra(ConfirmerActivity.EXTRA_PHOTOS, lechemiDesPhotos as ArrayList<String>)
+
+
 
             startActivity(intent2)
         }
@@ -126,10 +137,15 @@ class AjouterPhotoActivity : AppCompatActivity() {
         values.put(MediaStore.Images.Media.TITLE, "New Picture")
         values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
         image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+        lechemiDesPhotos.add(image_uri.toString())
+
+
 
 
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
+        //cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, lesphotos.get(NB_PHOTO))
+
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
 
@@ -140,12 +156,12 @@ class AjouterPhotoActivity : AppCompatActivity() {
             PERMISSION_CODE -> {
                 if (grantResults.size > 0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
-                    //permission from popup was granted
+
                     openCamera()
                 }
                 else{
 
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Permission non accordée", Toast.LENGTH_SHORT).show()
                 }
             }
         }

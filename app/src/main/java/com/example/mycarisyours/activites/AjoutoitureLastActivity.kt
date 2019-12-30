@@ -1,4 +1,4 @@
-package com.example.mycarisyours
+package com.example.mycarisyours.activites
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -6,15 +6,13 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import androidx.annotation.RequiresApi
+import com.example.mycarisyours.R
 import kotlinx.android.synthetic.main.activity_ajoutoiture_last.*
 import org.jetbrains.anko.toast
 import java.util.*
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.Month
+
 class AjoutoitureLastActivity : AppCompatActivity() {
 
     var Matricule=""
@@ -143,14 +141,15 @@ class AjoutoitureLastActivity : AppCompatActivity() {
             {
                 if (!varifierFormatMatricule(Matricule)) {
 
-                    imatriculation.setTextColor(Color.RED)
-                    imatriculation.setText("Format incorrect ")
+                    imatriculation.setHintTextColor(Color.RED)
+                    imatriculation.setHint("Format incorrect :FAB123CD7575")
+
                     toast("verifier votre matricule ")
 
                 } else {
 
                     val compar = dateFin!!.compareTo(dateDebut)
-                    if (compar > 0) {
+                    if (compar >=0) {
 
                         val intent2 = Intent(this, AjouterPhotoActivity::class.java)
 
@@ -198,18 +197,24 @@ class AjoutoitureLastActivity : AppCompatActivity() {
         /**
          * le format des plaques d'immatriculations
          * en france est sous forme
-         * F- AB 123 CD 75
+         * F-AB-123-CD-75
           * */
         var bien=true
 
         var c='a'
 
-        //on verifie le 1er caractére si c'est bien F pour France
-        if ((m.first() !='F')&&(m.first() !='f')){
+
+        if (m.length != 10){
 
             bien=false
         }
         else {
+
+            //on verifie le 1er caractére si c'est bien F pour France
+            if ((m.first() !='F')&&(m.first() !='f')){
+
+                bien=false
+            }
 
             //on verifie les 2 caractéres si c'est des lettres
             c=m.get(1)

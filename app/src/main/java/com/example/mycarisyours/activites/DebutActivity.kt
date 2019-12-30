@@ -1,8 +1,9 @@
-package com.example.mycarisyours
+package com.example.mycarisyours.activites
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mycarisyours.R
 import kotlinx.android.synthetic.main.activity_debut.*
 
 class DebutActivity : AppCompatActivity() {

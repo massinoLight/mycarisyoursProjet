@@ -1,14 +1,12 @@
-package com.example.mycarisyours
+package com.example.mycarisyours.activites
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_ajout_voiture_suit.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.*
+import com.example.mycarisyours.R
 import org.jetbrains.anko.toast
 
 
@@ -40,7 +38,7 @@ class AjoutVoitureSuitActivity : AppCompatActivity() , AdapterView.OnItemSelecte
         //le spinner de nombre de places
         val places : Spinner =findViewById(R.id.spinnerPlaces)
         val placesAdapter: ArrayAdapter<CharSequence> =
-            ArrayAdapter.createFromResource(this,R.array.place,android.R.layout.simple_spinner_item)
+            ArrayAdapter.createFromResource(this, R.array.place,android.R.layout.simple_spinner_item)
         placesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         places.setAdapter(placesAdapter)
         places.setOnItemSelectedListener(this)
@@ -101,7 +99,7 @@ class AjoutVoitureSuitActivity : AppCompatActivity() , AdapterView.OnItemSelecte
 
         val portes : Spinner =findViewById(R.id.spinnerPortes)
         val portesAdapter: ArrayAdapter<CharSequence> =
-            ArrayAdapter.createFromResource(this,R.array.porte,android.R.layout.simple_spinner_item)
+            ArrayAdapter.createFromResource(this, R.array.porte,android.R.layout.simple_spinner_item)
         portesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         portes.setAdapter(portesAdapter)
         portes.setOnItemSelectedListener(this)

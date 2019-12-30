@@ -1,4 +1,4 @@
-package com.example.mycarisyours
+package com.example.mycarisyours.activites
 
 
 
@@ -9,6 +9,7 @@ import com.backendless.Backendless
 import com.backendless.BackendlessUser
 import com.backendless.async.callback.AsyncCallback
 import com.backendless.exceptions.BackendlessFault
+import com.example.mycarisyours.R
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.jetbrains.anko.toast
 import util.BackendSettings

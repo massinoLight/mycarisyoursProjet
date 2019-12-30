@@ -1,4 +1,4 @@
-package com.example.mycarisyours
+package com.example.mycarisyours.activites
 
 
 
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.example.mycarisyours.R
 
 import kotlinx.android.synthetic.main.voiture_ajout.*
 import org.jetbrains.anko.toast
@@ -34,7 +35,7 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
          * */
         val marque : Spinner =findViewById(R.id.spinnerMarque)
         val marqueAdapter: ArrayAdapter<CharSequence> =
-            ArrayAdapter.createFromResource(this,R.array.marques,android.R.layout.simple_spinner_item)
+            ArrayAdapter.createFromResource(this, R.array.marques,android.R.layout.simple_spinner_item)
         marqueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         marque.setAdapter(marqueAdapter)
         marque.setOnItemSelectedListener(this)
@@ -164,25 +165,43 @@ class AjouterVoitureActivity : AppCompatActivity(),AdapterView.OnItemSelectedLis
 
                 LaMarque= parent?.getItemAtPosition(position).toString()
                 val  modelAdapter = when(LaMarque) {
-                    "WOLKSWAGEN" -> ArrayAdapter.createFromResource(this,R.array.WOLKSWAGEN,android.R.layout.simple_spinner_item)
-                    "PEUGEOT" -> ArrayAdapter.createFromResource(this,R.array.PEUGEOT,android.R.layout.simple_spinner_item)
-                    "AUDI" -> ArrayAdapter.createFromResource(this,R.array.AUDI,android.R.layout.simple_spinner_item)
-                    "BMW" -> ArrayAdapter.createFromResource(this,R.array.BMW,android.R.layout.simple_spinner_item)
-                    "CHEVROLET" -> ArrayAdapter.createFromResource(this,R.array.CHEVROLET,android.R.layout.simple_spinner_item)
-                    "ALFA ROMEO" -> ArrayAdapter.createFromResource(this,R.array.ALFAROMEO,android.R.layout.simple_spinner_item)
-                    "CITROEN" -> ArrayAdapter.createFromResource(this,R.array.CITROEN,android.R.layout.simple_spinner_item)
-                    "DACIA" -> ArrayAdapter.createFromResource(this,R.array.DACIA,android.R.layout.simple_spinner_item)
-                    "FIAT" -> ArrayAdapter.createFromResource(this,R.array.FIAT,android.R.layout.simple_spinner_item)
-                    "FORD" -> ArrayAdapter.createFromResource(this,R.array.FORD,android.R.layout.simple_spinner_item)
-                    "HYUNDAI" -> ArrayAdapter.createFromResource(this,R.array.HYUNDAI,android.R.layout.simple_spinner_item)
-                    "JEEP" -> ArrayAdapter.createFromResource(this,R.array.JEEP,android.R.layout.simple_spinner_item)
-                    "KIA" -> ArrayAdapter.createFromResource(this,R.array.KIA,android.R.layout.simple_spinner_item)
-                    "MINI" -> ArrayAdapter.createFromResource(this,R.array.MINI,android.R.layout.simple_spinner_item)
-                    "OPEL" -> ArrayAdapter.createFromResource(this,R.array.OPEL,android.R.layout.simple_spinner_item)
-                    "SEAT" -> ArrayAdapter.createFromResource(this,R.array.SEAT,android.R.layout.simple_spinner_item)
-                    "TOYOTA" -> ArrayAdapter.createFromResource(this,R.array.TOYOTA,android.R.layout.simple_spinner_item)
+                    "WOLKSWAGEN" -> ArrayAdapter.createFromResource(this,
+                        R.array.WOLKSWAGEN,android.R.layout.simple_spinner_item)
+                    "PEUGEOT" -> ArrayAdapter.createFromResource(this,
+                        R.array.PEUGEOT,android.R.layout.simple_spinner_item)
+                    "AUDI" -> ArrayAdapter.createFromResource(this,
+                        R.array.AUDI,android.R.layout.simple_spinner_item)
+                    "BMW" -> ArrayAdapter.createFromResource(this,
+                        R.array.BMW,android.R.layout.simple_spinner_item)
+                    "CHEVROLET" -> ArrayAdapter.createFromResource(this,
+                        R.array.CHEVROLET,android.R.layout.simple_spinner_item)
+                    "ALFA ROMEO" -> ArrayAdapter.createFromResource(this,
+                        R.array.ALFAROMEO,android.R.layout.simple_spinner_item)
+                    "CITROEN" -> ArrayAdapter.createFromResource(this,
+                        R.array.CITROEN,android.R.layout.simple_spinner_item)
+                    "DACIA" -> ArrayAdapter.createFromResource(this,
+                        R.array.DACIA,android.R.layout.simple_spinner_item)
+                    "FIAT" -> ArrayAdapter.createFromResource(this,
+                        R.array.FIAT,android.R.layout.simple_spinner_item)
+                    "FORD" -> ArrayAdapter.createFromResource(this,
+                        R.array.FORD,android.R.layout.simple_spinner_item)
+                    "HYUNDAI" -> ArrayAdapter.createFromResource(this,
+                        R.array.HYUNDAI,android.R.layout.simple_spinner_item)
+                    "JEEP" -> ArrayAdapter.createFromResource(this,
+                        R.array.JEEP,android.R.layout.simple_spinner_item)
+                    "KIA" -> ArrayAdapter.createFromResource(this,
+                        R.array.KIA,android.R.layout.simple_spinner_item)
+                    "MINI" -> ArrayAdapter.createFromResource(this,
+                        R.array.MINI,android.R.layout.simple_spinner_item)
+                    "OPEL" -> ArrayAdapter.createFromResource(this,
+                        R.array.OPEL,android.R.layout.simple_spinner_item)
+                    "SEAT" -> ArrayAdapter.createFromResource(this,
+                        R.array.SEAT,android.R.layout.simple_spinner_item)
+                    "TOYOTA" -> ArrayAdapter.createFromResource(this,
+                        R.array.TOYOTA,android.R.layout.simple_spinner_item)
 
-                    else -> ArrayAdapter.createFromResource(this,R.array.VIDE,android.R.layout.simple_spinner_item)
+                    else -> ArrayAdapter.createFromResource(this,
+                        R.array.VIDE,android.R.layout.simple_spinner_item)
                 }
                 val model : Spinner =findViewById(R.id.spinnerModel)
 
