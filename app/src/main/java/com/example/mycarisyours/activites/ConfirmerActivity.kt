@@ -29,6 +29,7 @@ class ConfirmerActivity : AppCompatActivity() {
         const val EXTRA_MATRICULE = "Vehicule.matricule"
         const val EXTRA_DATEDEBUT = "Vehicule.datedebut"
         const val EXTRA_DATEFIN = "Vehicule.datefin"
+        const val EXTRA_PRIX = "Vehicule.prix"
 
         //4eme page
         const val EXTRA_PHOTOS = "Vehicule.photos"
@@ -57,6 +58,7 @@ class ConfirmerActivity : AppCompatActivity() {
         val matricule = intent.getStringExtra(EXTRA_MATRICULE)
         val datedebut = intent.getSerializableExtra(EXTRA_DATEDEBUT) as LocalDate
         val datefin = intent.getSerializableExtra(EXTRA_DATEFIN) as LocalDate
+        val prix = intent.getStringExtra(ConfirmerActivity.EXTRA_PRIX)
 
         //page 4
 
@@ -84,6 +86,7 @@ class ConfirmerActivity : AppCompatActivity() {
             intent2.putExtra(EXTRA_MATRICULE,matricule )
             intent2.putExtra(EXTRA_DATEDEBUT,datedebut )
             intent2.putExtra(EXTRA_DATEFIN,datefin )
+            intent2.putExtra(EXTRA_PRIX, prix)
             intent2.putStringArrayListExtra(EXTRA_PHOTOS,photos as ArrayList<String>)
             intent2.putExtra("EXTRA_CONFIRMER",true )
 

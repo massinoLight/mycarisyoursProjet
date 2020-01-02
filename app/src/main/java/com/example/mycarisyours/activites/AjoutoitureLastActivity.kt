@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.mycarisyours.R
 import kotlinx.android.synthetic.main.activity_ajoutoiture_last.*
@@ -18,13 +20,17 @@ class AjoutoitureLastActivity : AppCompatActivity() {
     var Matricule=""
      var dateDebut: LocalDate? = null
     var dateFin: LocalDate? = null
-
+    var prix="35"
+    lateinit var slider : SeekBar
+    lateinit var value : TextView
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ajoutoiture_last)
 
+        slider = findViewById(R.id.seekBar) as SeekBar
+        value = findViewById(R.id.prix) as TextView
 
 
         val marque = intent.getStringExtra(ConfirmerActivity.EXTRA_MARQUE)
@@ -38,9 +44,7 @@ class AjoutoitureLastActivity : AppCompatActivity() {
         val animeaux = intent.getStringExtra(ConfirmerActivity.EXTRA_ANIMEAUX)
 
 
-
-
-
+        slider.max = 400
 
 
         val calendrier =Calendar.getInstance()
@@ -166,6 +170,7 @@ class AjoutoitureLastActivity : AppCompatActivity() {
                         intent2.putExtra(ConfirmerActivity.EXTRA_MATRICULE, Matricule)
                         intent2.putExtra(ConfirmerActivity.EXTRA_DATEDEBUT, dateDebut)
                         intent2.putExtra(ConfirmerActivity.EXTRA_DATEFIN, dateFin)
+                        intent2.putExtra(ConfirmerActivity.EXTRA_PRIX, prix)
 
 
 
@@ -191,8 +196,37 @@ class AjoutoitureLastActivity : AppCompatActivity() {
 
         }
 
-        }
 
+        /**
+         * la snackbar du prix par defaut le prix est a 35£/h
+         * */
+        slider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                prix=progress.toString()
+                value.text = progress.toString()+" €/h"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                prix="35"
+                value.text = "Prix conseillé 35€/h "
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                prix=seekBar.progress.toString()
+                value.text = seekBar.progress.toString()+" €/h"
+            }
+        })
+
+
+
+
+
+    }
+
+    /**
+     * fonction pour verifier le bon format
+     * de la plaque d'immatrculation
+     * */
     private fun varifierFormatMatricule(m:String):Boolean{
         /**
          * le format des plaques d'immatriculations

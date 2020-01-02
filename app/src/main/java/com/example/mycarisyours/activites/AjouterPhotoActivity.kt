@@ -58,6 +58,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
         val matricule = intent.getStringExtra(ConfirmerActivity.EXTRA_MATRICULE)
         val datedebut = intent.getSerializableExtra(ConfirmerActivity.EXTRA_DATEDEBUT) as LocalDate
         val datefin = intent.getSerializableExtra(ConfirmerActivity.EXTRA_DATEFIN) as LocalDate
+        val prix = intent.getStringExtra(ConfirmerActivity.EXTRA_PRIX)
 
 
 
@@ -109,6 +110,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
             intent2.putExtra(ConfirmerActivity.EXTRA_MATRICULE,matricule )
             intent2.putExtra(ConfirmerActivity.EXTRA_DATEDEBUT,datedebut )
             intent2.putExtra(ConfirmerActivity.EXTRA_DATEFIN,datefin )
+            intent2.putExtra(ConfirmerActivity.EXTRA_PRIX, prix)
            // intent2.putExtra(ConfirmerActivity.EXTRA_PHOTOS,lesphotos)
             intent2.putStringArrayListExtra(ConfirmerActivity.EXTRA_PHOTOS, lechemiDesPhotos as ArrayList<String>)
 
