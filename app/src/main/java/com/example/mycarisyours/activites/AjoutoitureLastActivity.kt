@@ -143,10 +143,12 @@ class AjoutoitureLastActivity : AppCompatActivity() {
             }
             else
             {
-                if (!varifierFormatMatricule(Matricule)) {
+                if (!varifierFormatMatricule(Matricule))//||(!varifierFormatAncienMatricule(Matricule)))
+
+                {
 
                     imatriculation.setHintTextColor(Color.RED)
-                    imatriculation.setHint("Format incorrect :FAB123CD7575")
+                    imatriculation.setHint("Format incorrect:AB123CD75 ou 123AB75")
 
                     toast("verifier votre matricule ")
 
@@ -225,7 +227,7 @@ class AjoutoitureLastActivity : AppCompatActivity() {
 
     /**
      * fonction pour verifier le bon format
-     * de la plaque d'immatrculation
+     * de la plaque d'immatrculation apres 2009
      * */
     private fun varifierFormatMatricule(m:String):Boolean{
         /**
@@ -238,70 +240,65 @@ class AjoutoitureLastActivity : AppCompatActivity() {
         var c='a'
 
 
-        if (m.length != 10){
+        if (m.length != 9){
 
             bien=false
         }
         else {
 
-            //on verifie le 1er caractére si c'est bien F pour France
-            if ((m.first() !='F')&&(m.first() !='f')){
-
-                bien=false
-            }
 
             //on verifie les 2 caractéres si c'est des lettres
+            c=m.get(0)
+            if (!lettre(c)){
+                bien=false
+
+            }
+
             c=m.get(1)
             if (!lettre(c)){
                 bien=false
 
             }
 
+            //on verifie si les trois chiffres sont présent
             c=m.get(2)
-            if (!lettre(c)){
+            if (!chiffre(c)){
                 bien=false
 
             }
 
-            //on verifie si les trois chiffres sont présent
             c=m.get(3)
             if (!chiffre(c)){
                 bien=false
 
             }
-
             c=m.get(4)
-            if (!chiffre(c)){
-                bien=false
-
-            }
-            c=m.get(5)
             if (!chiffre(c)){
                 bien=false
 
             }
 
             //on verifie les 2 derniéres lettres
+            c=m.get(5)
+            if (!lettre(c)){
+                bien=false
+
+            }
+
             c=m.get(6)
             if (!lettre(c)){
                 bien=false
 
             }
 
-            c=m.get(7)
-            if (!lettre(c)){
-                bien=false
-
-            }
-
             //on verifie les deux chiffres du département
-            c=m.get(8)
+            c=m.get(7)
             if (!chiffre(c)){
                 bien=false
 
             }
 
-            c=m.get(9)
+            c=m.get(8)
             if (!chiffre(c)){
                 bien=false
 
@@ -311,6 +308,81 @@ class AjoutoitureLastActivity : AppCompatActivity() {
 
 
    return bien
+    }
+
+
+    /**
+     * fonction pour verifier le bon format
+     * de la plaque d'immatrculation avant 2009
+     * */
+    private fun varifierFormatAncienMatricule(m:String):Boolean{
+        /**
+         * le format des plaques d'immatriculations
+         * en france est sous forme
+         * 123-AB-75
+         * */
+        var bien=true
+
+        var c='a'
+
+
+        if (m.length != 7){
+
+            bien=false
+        }
+        else {
+
+
+            //on verifie les 3 caractéres si c'est des chiffre
+
+            c=m.get(0)
+            if (!chiffre(c)){
+                bien=false
+
+            }
+
+            c=m.get(1)
+            if (!chiffre(c)){
+                bien=false
+
+            }
+            c=m.get(2)
+            if (!chiffre(c)){
+                bien=false
+
+            }
+
+
+            //on verifie les 2 derniéres lettres
+            c=m.get(3)
+            if (!lettre(c)){
+                bien=false
+
+            }
+
+            c=m.get(4)
+            if (!lettre(c)){
+                bien=false
+
+            }
+
+            //on verifie les deux chiffres du département
+            c=m.get(5)
+            if (!chiffre(c)){
+                bien=false
+
+            }
+
+            c=m.get(6)
+            if (!chiffre(c)){
+                bien=false
+
+            }
+
+        }
+
+
+        return bien
     }
 
 

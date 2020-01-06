@@ -5,10 +5,36 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import com.backendless.Backendless
 import com.example.mycarisyours.R
+import com.example.mycarisyours.adapter.Voiture
 import kotlinx.android.synthetic.main.activity_confirmer.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
+import util.BackendSettings
 import java.time.LocalDate
 import java.util.*
+
+
+data class VoitureBackendLess(var objectId: String? = null,
+                              var Bmarque:String="",
+                              var Bmodele:String="",
+    //var Benergie:String="",
+    //var Bvitesse:String="",
+                              var Bdescription:String="",
+    // var Bnbplaces: String = "",
+    // var Bnbportes: String = "",
+    // var Bfumeur: String = "",
+    // var Banimeaux: String = "",
+                              var Bmatricule: String = "",
+    // var Bdatedebut: String = "",
+    // var Bdatefin: String = "",
+                              var Bprix: String = ""
+    // var Bphotos1: String = "",
+    // var Bphotos2: String = "",
+    // var Bphotos3: String = "",
+    // var Bphotos4: String = ""
+)
 
 class ConfirmerActivity : AppCompatActivity() {
 
@@ -36,10 +62,16 @@ class ConfirmerActivity : AppCompatActivity() {
 
     }
 
+
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirmer)
+
+        Backendless.initApp(this,
+            BackendSettings.APPLICATION_ID, BackendSettings.ANDROID_SECRET_KEY )
 
         //page 1
         val marque = intent.getStringExtra(EXTRA_MARQUE)
@@ -68,42 +100,28 @@ class ConfirmerActivity : AppCompatActivity() {
 
         Confirmer.setOnClickListener {
 
+            /******
+             *
+             * la partie stockage sur le cloud
+             *
+             * **/
 
+            val voi = VoitureBackendLess(
+                null, marque, modele,
+                description, matricule, prix)
 
+            doAsync {
+                Backendless.Persistence
+                    .of(VoitureBackendLess::class.java).save(voi)
+            }
+
+            toast("données bien ajouté au clound")
             val intent2 = Intent(this, AccueilActivity::class.java)
-
-
-            intent2.putExtra(EXTRA_VALIDER,true )
-            intent2.putExtra(EXTRA_MARQUE,marque )
-            intent2.putExtra(EXTRA_MODÉLE,modele )
-            intent2.putExtra(EXTRA_ENERGIE,energie )
-            intent2.putExtra(EXTRA_VITESSE,vitesse )
-            intent2.putExtra(EXTRA_DESCRIPTION,description )
-            intent2.putExtra(EXTRA_PLACES, nbplaces)
-            intent2.putExtra(EXTRA_PORTES,nbportes )
-            intent2.putExtra(EXTRA_FUMEUR, fumeur)
-            intent2.putExtra(EXTRA_ANIMEAUX, animeaux)
-            intent2.putExtra(EXTRA_MATRICULE,matricule )
-            intent2.putExtra(EXTRA_DATEDEBUT,datedebut )
-            intent2.putExtra(EXTRA_DATEFIN,datefin )
-            intent2.putExtra(EXTRA_PRIX, prix)
-            intent2.putStringArrayListExtra(EXTRA_PHOTOS,photos as ArrayList<String>)
-            intent2.putExtra("EXTRA_CONFIRMER",true )
-
-
             startActivity(intent2)
 
             finish()
 
-
-
-
         }
-
-
-
-
-
 
 
     }

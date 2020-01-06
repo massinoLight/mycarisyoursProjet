@@ -94,7 +94,7 @@
             android:layout_height="51dp"
 
             android:buttonTint="#FD0F0000"
-            android:text="Animeaux acceptés"
+            android:text="Animaux acceptés"
             android:textSize="18sp" />
 
         <CheckBox
@@ -103,7 +103,7 @@
             android:layout_height="45dp"
 
             android:buttonTint="#FD0F0000"
-            android:text="Animeaux non acceptés"
+            android:text="Animaux non acceptés"
             android:textSize="18sp" />
 
     </GridLayout>

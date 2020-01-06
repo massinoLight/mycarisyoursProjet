@@ -13,10 +13,10 @@ import java.time.LocalDate
 import java.util.ArrayList
 
 
-data class Voiture(val marque:String, val modele:String, val energie:String, val vitesse:String
-                   , val places:String, val portes:String, val fumeur:String, val animaux:String
-                   , val description:String, val matricule:String, val dateDeb: LocalDate, val datefin: LocalDate,
-                   val prix:String,val photo:ArrayList<String>)
+data class Voiture(val marque:String?, val modele:String?, val energie:String?, val vitesse:String?
+                   , val places:String?, val portes:String?, val fumeur:String?, val animaux:String?
+                   , val description:String?, val matricule:String?, val dateDeb: String?, val datefin: String?,
+                   val prix:String?,val photo1:String?,val photo2:String?,val photo3:String?,val photo4:String?)
 
 class VoitureAdapter(val voitureAAfficher: Array<Voiture>, val listener: (Voiture)-> Unit):
     RecyclerView.Adapter<VoitureAdapter.ViewHolder>() {
@@ -50,9 +50,11 @@ class VoitureAdapter(val voitureAAfficher: Array<Voiture>, val listener: (Voitur
         fun bind(voiture:Voiture,listener: (Voiture) -> Unit)= with(itemView)
         {
             android.util.Log.i("XXXX","FCT Bind ")
-            //remplissage de la partie nom
+
             itemView.tv_marque.text=voiture.marque
             itemView.tv_modele.text= voiture.modele
+            itemView.tv_prix.text= voiture.prix
+            itemView.tv_description.text= voiture.description
 
             //l'action a realiser lors du clic  sur un element
             setOnClickListener{(listener(voiture))}

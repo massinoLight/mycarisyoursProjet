@@ -6,18 +6,27 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.backendless.Backendless
+import com.backendless.exceptions.BackendlessFault
+import com.backendless.files.BackendlessFile
 import kotlinx.android.synthetic.main.activity_ajouter_photo.*
 import org.jetbrains.anko.toast
 import java.time.LocalDate
 import java.util.*
 import com.example.mycarisyours.R
+import util.BackendSettings
+import java.io.File
+import java.time.LocalDateTime
+import com.backendless.async.callback.AsyncCallback as AsyncCallback
 
 
 class AjouterPhotoActivity : AppCompatActivity() {
@@ -26,20 +35,19 @@ class AjouterPhotoActivity : AppCompatActivity() {
     private val IMAGE_CAPTURE_CODE = 1001
     private var NB_PHOTO=5
     var image_uri: Uri? = null
+    var image_url = ArrayList<String?>()
 
 
-
-    //var lesphotos = Array<Uri?>(5){ i->null}
-
-
-    //var lechemiDesPhotos = mutableListOf<String?>()
-
-     var lechemiDesPhotos = ArrayList<String?>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ajouter_photo)
+        image_url.addAll(listOf("", "", "",""))
+
+        //backendless informations key
+        Backendless.initApp(this,
+            BackendSettings.APPLICATION_ID, BackendSettings.ANDROID_SECRET_KEY )
 
         //page 1
         val marque = intent.getStringExtra(ConfirmerActivity.EXTRA_MARQUE)
@@ -112,7 +120,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
             intent2.putExtra(ConfirmerActivity.EXTRA_DATEFIN,datefin )
             intent2.putExtra(ConfirmerActivity.EXTRA_PRIX, prix)
            // intent2.putExtra(ConfirmerActivity.EXTRA_PHOTOS,lesphotos)
-            intent2.putStringArrayListExtra(ConfirmerActivity.EXTRA_PHOTOS, lechemiDesPhotos as ArrayList<String>)
+            intent2.putStringArrayListExtra(ConfirmerActivity.EXTRA_PHOTOS, image_url as ArrayList<String?>)
 
 
 
@@ -139,7 +147,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
         values.put(MediaStore.Images.Media.TITLE, "New Picture")
         values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
         image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-        lechemiDesPhotos.add(image_uri.toString())
+
 
 
 
@@ -169,6 +177,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
@@ -176,7 +185,25 @@ class AjouterPhotoActivity : AppCompatActivity() {
 
             if (NB_PHOTO!=0){
 
-               when(NB_PHOTO) {
+                // now upload the file
+                val current = LocalDateTime.now().toString()
+                var bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image_uri)
+                Backendless.Files.Android.upload(bitmap, Bitmap.CompressFormat.PNG,
+                    100, current+".png", "files/photos", object : AsyncCallback<BackendlessFile> {
+                    override fun handleResponse(uploadedFile: BackendlessFile) {
+                        //toast("image bien inséré au clound. File URL is - ${uploadedFile.fileURL}")
+
+                        image_url.add(uploadedFile.fileURL.toString())
+
+                    }
+
+                    override fun handleFault(fault: BackendlessFault) {
+                        toast(fault.message)
+
+                    }
+                })
+
+                when(NB_PHOTO) {
 
                     1 ->image_view.setImageURI(image_uri)
                     2 ->image_view2.setImageURI(image_uri)
@@ -185,6 +212,7 @@ class AjouterPhotoActivity : AppCompatActivity() {
 
                     else ->toast("4 photos suffisent largement ")
                 }
+
 
             }
             else
