@@ -2,6 +2,7 @@ package com.example.mycarisyours.adapter
 
 
 
+import android.graphics.Bitmap
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,7 @@ import java.util.ArrayList
 data class Voiture(val marque:String?, val modele:String?, val energie:String?, val vitesse:String?
                    , val places:String?, val portes:String?, val fumeur:String?, val animaux:String?
                    , val description:String?, val matricule:String?, val dateDeb: String?, val datefin: String?,
-                   val prix:String?,val photo1:String?,val photo2:String?,val photo3:String?,val photo4:String?)
+                   val prix:String?,val photo1:String?,val photo2:String?,val photo3:String?,val photo4:String?,val IMAGE: Bitmap?)
 
 class VoitureAdapter(val voitureAAfficher: Array<Voiture>, val listener: (Voiture)-> Unit):
     RecyclerView.Adapter<VoitureAdapter.ViewHolder>() {
@@ -55,6 +56,7 @@ class VoitureAdapter(val voitureAAfficher: Array<Voiture>, val listener: (Voitur
             itemView.tv_modele.text= voiture.modele
             itemView.tv_prix.text= voiture.prix
             itemView.tv_description.text= voiture.description
+            itemView.image.setImageBitmap(voiture.IMAGE)
 
             //l'action a realiser lors du clic  sur un element
             setOnClickListener{(listener(voiture))}

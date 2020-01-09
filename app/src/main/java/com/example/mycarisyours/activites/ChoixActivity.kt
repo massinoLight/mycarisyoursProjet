@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycarisyours.R
+import com.example.mycarisyours.map.MapsActivity
 
 import kotlinx.android.synthetic.main.activity_choix.*
 
@@ -18,7 +19,7 @@ class ChoixActivity : AppCompatActivity() {
 
         trouver.setOnClickListener {
 
-            val intent = Intent(this, MapActivity::class.java)
+            val intent = Intent(this, MapsActivity::class.java)
 
             startActivity(intent)
 

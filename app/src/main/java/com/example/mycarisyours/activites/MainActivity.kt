@@ -58,9 +58,7 @@ class MainActivity : AppCompatActivity() {
                         })
 
                 }
-
-
-                    null -> {
+                null -> {
 
                 toast("pas de réseau")
             }
@@ -81,13 +79,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
-
-
-
-
-
-
 
 }

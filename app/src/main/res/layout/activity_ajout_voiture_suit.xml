@@ -11,6 +11,36 @@
     android:padding="20dp">
 
 
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+
+        android:background="@drawable/shapdescription"
+        android:drawableLeft="@drawable/ic_create_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="Déscription"
+        android:padding="15dp"
+        android:textColor="@color/Black"
+        android:textColorHighlight="@color/Black"
+        android:textColorHint="@color/Black"
+
+        />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="346dp"
+        android:layout_height="57dp"
+        android:text="      Informations Utiles"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="142dp"
@@ -107,45 +137,6 @@
             android:textSize="18sp" />
 
     </GridLayout>
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="346dp"
-        android:layout_height="57dp"
-        android:text="      Déscription du vehicule"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-
-
-
-
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName"
-
-        android:background="@drawable/shapdescription"
-        android:drawableLeft="@drawable/ic_create_black_24dp"
-        android:drawablePadding="10dp"
-        android:hint="Déscription"
-        android:padding="15dp"
-        android:textColor="@color/Black"
-        android:textColorHighlight="@color/Black"
-        android:textColorHint="@color/Black"
-
-        />
-
-
-
-
-
-
 
     <LinearLayout
         android:layout_width="328dp"

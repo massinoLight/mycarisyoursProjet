@@ -4,10 +4,13 @@ package com.example.mycarisyours.activites
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.ConnectivityManager
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,9 +24,11 @@ import com.example.mycarisyours.adapter.VoitureAdapter
 import com.example.mycarisyours.ui.main.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.style.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import util.BackendSettings
+import java.net.URL
 import java.time.LocalDate
 
 class AccueilActivity : AppCompatActivity() {
@@ -32,6 +37,9 @@ class AccueilActivity : AppCompatActivity() {
 
 
     var voitures = mutableListOf<Voiture>()
+     var IMAGE: Bitmap? = null
+    var lesurl = arrayListOf<String?>()
+    var lesimage =arrayListOf<Bitmap?>()
 
 
     @SuppressLint("ServiceCast")
@@ -54,6 +62,8 @@ class AccueilActivity : AppCompatActivity() {
         tabs.addTab(tabs.newTab().setText("Vélo/Moto"))
         tabs.addTab(tabs.newTab().setText("Utilitaire"))
 
+        RecuperationUrlImage().execute("stp")
+
         val rec=Recuperation()
 
         /***
@@ -69,12 +79,7 @@ class AccueilActivity : AppCompatActivity() {
                 rec.execute("stp")
             null -> { toast("Pas de réseau") }
         }
-
-
-
-
-
-        add.setOnClickListener {
+         add.setOnClickListener {
             val intent2 = Intent(this, DebutActivity::class.java)
             startActivity(intent2)
             finish()
@@ -84,19 +89,48 @@ class AccueilActivity : AppCompatActivity() {
 
     }
 
+    inner class RecuperationUrlImage(): AsyncTask<String, Int, MutableList<MutableMap<Any?, Any?>>>() {
+
+        override fun doInBackground(vararg params: String?): MutableList<MutableMap<Any?, Any?>>? {
+
+            val lesvoitures = Backendless.Data.of("VoitureBackendLess")
+                .find(DataQueryBuilder.create().setPageSize(25).setOffset(0))
+            return lesvoitures
+        }
+
+
+        override fun onProgressUpdate(vararg values: Int?) {
+            super.onProgressUpdate(*values)
+        }
+
+
+        override fun onPostExecute(result: MutableList<MutableMap<Any?, Any?>>) {
+            super.onPostExecute(result)
+            var i=0
+            for (msg in result) {
+               lesurl?.add("${msg["Bphoto1"]}")
+                //toast("${msg["Bphoto1"]}")
+                toast("mutableListe ${lesurl?.get(i)}")
+                RecuperationImage()
+                    .execute(lesurl?.get(i))
+
+                i++
+
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
 
 
     inner class Recuperation(): AsyncTask<String, Int, MutableList<MutableMap<Any?, Any?>>>() {
-
-        lateinit var mcontext :Context
-
-
-          override fun onPreExecute() {
-            super.onPreExecute()
-
-
-        }
-
         /***
          *
          * Fonction qui va s'executer en tache de fond pour recupérer les informations du cloud
@@ -106,9 +140,11 @@ class AccueilActivity : AppCompatActivity() {
          * **/
         override fun doInBackground(vararg params: String?): MutableList<MutableMap<Any?, Any?>>? {
 
+            Log.w("doInBackground", "ca recup les voiture de BL Recuperation() doInBackground")
+
             val lesvoitures = Backendless.Data.of("VoitureBackendLess")
                 .find(DataQueryBuilder.create().setPageSize(25).setOffset(0))
-           return lesvoitures
+            return lesvoitures
         }
 
 
@@ -124,24 +160,65 @@ class AccueilActivity : AppCompatActivity() {
          * **/
         override fun onPostExecute(result: MutableList<MutableMap<Any?, Any?>>) {
             super.onPostExecute(result)
-            for (msg in result){
 
-        val p10=Voiture("${msg["Bmarque"]}","${msg["Bmodele"]}", "${msg["Benergie"]}","${msg["Bvitesse"]}",
-                    "${msg["Bnbplaces"]}","${msg["Bnbportes"]}","${msg["Bfumeur"]}","${msg["Banimeaux"]}","${msg["Bdescription"]}",
-                    "${msg["Bmatricule"]}","${msg["Bdatedebut"]}","${msg["Bdatefin"]}","${msg["Bprix"]}",
-                    "${msg["Bphotos1"]}","${msg["Bphotos2"]}","${msg["Bphotos3"]}","${msg["Bphotos4"]}")
+            var h=0
 
 
-                voitures.add(p10)
-                voitures.sortWith(compareBy({it.marque}))
-                buildRecyclerView()
-                mon_recycler.adapter?.notifyItemInserted(0)
+            for (msg in result) {
+                val p10 = Voiture(
+                        "${msg["Bmarque"]}","${msg["Bmodele"]}","${msg["Benergie"]}",
+                        "${msg["Bvitesse"]}","${msg["Bnbplaces"]}","${msg["Bnbportes"]}",
+                        "${msg["Bfumeur"]}","${msg["Banimeaux"]}","${msg["Bdescription"]}",
+                        "${msg["Bmatricule"]}","${msg["Bdatedebut"]}","${msg["Bdatefin"]}",
+                        "${msg["Bprix"]}","${msg["Bphoto1"]}","${msg["Bphoto2"]}",
+                        "${msg["Bphoto3"]}","${msg["Bphoto4"]}",IMAGE
+                    )
 
-            }
+               h++
+                    voitures.add(p10)
+                    voitures.sortWith(compareBy({ it.marque }))
+                    buildRecyclerView()
+                    mon_recycler.adapter?.notifyItemInserted(0)
+
+                }
+
 
         }
 
     }
+
+    /***
+     * on telecharge  l'image qu'on a stocké sur backendless
+     * en http pour l'afficher pour chaque voitures
+     *
+     * **/
+
+    inner class RecuperationImage() : AsyncTask<String, Void, Bitmap?>() {
+        override fun doInBackground(vararg urls: String): Bitmap? {
+            Log.w("doInBackground", "ca recup les images en http avec les url passé en paramétre doInBackground")
+            val urlOfImage = urls[0]
+            return try {
+                val inputStream = URL(urlOfImage).openStream()
+                BitmapFactory.decodeStream(inputStream)
+            } catch (e: Exception) { // Catch the download exception
+                e.printStackTrace()
+                null
+            }
+        }
+
+        override fun onPostExecute(result: Bitmap?) {
+            if (result != null) {
+                Log.w("onPostExecute", "ca affecte les image bitmap a la liste onPostExecute")
+                IMAGE=result
+                lesimage?.add(IMAGE)
+                toast("${lesimage.size}")
+
+            } else {
+                toast("Erreur lors du telechargement")
+            }
+        }
+    }
+
 
 
 

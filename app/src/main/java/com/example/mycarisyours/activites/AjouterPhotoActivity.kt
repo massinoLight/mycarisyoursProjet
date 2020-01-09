@@ -31,7 +31,7 @@ import com.backendless.async.callback.AsyncCallback as AsyncCallback
 
 class AjouterPhotoActivity : AppCompatActivity() {
 
-    private val PERMISSION_CODE = 1000;
+    private val PERMISSION_CODE = 1000
     private val IMAGE_CAPTURE_CODE = 1001
     private var NB_PHOTO=5
     var image_uri: Uri? = null

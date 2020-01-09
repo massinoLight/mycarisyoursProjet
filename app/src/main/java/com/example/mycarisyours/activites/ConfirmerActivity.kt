@@ -30,10 +30,10 @@ data class VoitureBackendLess(var objectId: String? = null,
     // var Bdatedebut: String = "",
     // var Bdatefin: String = "",
                               var Bprix: String = ""
-    // var Bphotos1: String = "",
-    // var Bphotos2: String = "",
-    // var Bphotos3: String = "",
-    // var Bphotos4: String = ""
+    // var Bphoto1: String = "",
+    // var Bphoto2: String = "",
+    // var Bphoto3: String = "",
+    // var Bphoto4: String = ""
 )
 
 class ConfirmerActivity : AppCompatActivity() {
