@@ -25,7 +25,7 @@
         android:background="@drawable/shapdescription"
         android:drawableLeft="@drawable/ic_directions_car_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="Imatriculation: FAB123CD75"
+        android:hint="Imatriculation: AB123CD"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textColor="@color/Black"

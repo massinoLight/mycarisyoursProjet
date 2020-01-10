@@ -59,12 +59,12 @@
             android:layout_height="wrap_content" />
 
 
-
-
         <LinearLayout
             android:layout_width="328dp"
             android:layout_height="122dp"
             android:orientation="horizontal">
+
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/precedent"
@@ -101,23 +101,11 @@
                     app:strokeWidth="2dp" />
 
 
+
+
+
+
+
         </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>

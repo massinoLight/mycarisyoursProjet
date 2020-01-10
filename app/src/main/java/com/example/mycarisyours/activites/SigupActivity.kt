@@ -11,6 +11,7 @@ import com.backendless.async.callback.AsyncCallback
 import com.backendless.exceptions.BackendlessFault
 import com.example.mycarisyours.R
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.jetbrains.anko.email
 import org.jetbrains.anko.toast
 import util.BackendSettings
 
@@ -53,6 +54,7 @@ class SigupActivity: AppCompatActivity() {
                 Backendless.UserService.register(user, object : AsyncCallback<BackendlessUser> {
                     override fun handleResponse(registeredUser: BackendlessUser?) {
                         toast( "User bien ajouté")
+                        email(mail, "bienvenu ${nom}", "Bienvenu parmi nous ")
                         startActivity(intent1)
                         finish()
                     }

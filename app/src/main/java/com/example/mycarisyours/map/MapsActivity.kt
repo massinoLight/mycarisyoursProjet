@@ -58,6 +58,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         const val homeSweetHome_lat=36.759471
         const val homeSweetHome_lng= 5.084948
 
+        const val hassi_Messaoud_lat= 31.699021
+        const val hassi_Messaoud_lng= 6.065078
+
+
+
 
     }
 
@@ -148,6 +153,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         var options6: MarkerOptions= MarkerOptions()
         var options7: MarkerOptions= MarkerOptions()
         var options8: MarkerOptions= MarkerOptions()
+        var options9: MarkerOptions= MarkerOptions()
         var homesweethome: MarkerOptions= MarkerOptions()
         val sydney = LatLng(lat,lng)
         val laFac = LatLng(saintMauricelat, saintMauricelng)
@@ -157,6 +163,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         val sacreCoeur = LatLng(sacréCoeur_lat, sacréCoeur_lng)
         val homeSweetHomepos = LatLng(homeSweetHome_lat, homeSweetHome_lng)
 
+        val hassi = LatLng(hassi_Messaoud_lat, hassi_Messaoud_lng)
         val paris13eme = LatLng(paris13eme_lat, paris13eme_lng)
         val didrot = LatLng(didrot_lat, didrot_lng)
         val upmc = LatLng(upmc_lat, upmc_lng)
@@ -210,9 +217,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         options8.position(sacreCoeur)
 
 
+        options9.title("La Toyota de Kiki ")
+        options9.snippet("(Anoucha)")
+        options9.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options9.position(hassi)
 
-        homesweethome.title("Home sweet Home")
-        homesweethome.snippet("Chez moi")
+
+
+        homesweethome.title("Houma cherchour")
+        homesweethome.snippet("Toyota de Maman ")
         homesweethome.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
         homesweethome.position(homeSweetHomepos)
 
@@ -230,6 +243,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         mMap.addMarker(options6)
         mMap.addMarker(options7)
         mMap.addMarker(options8)
+        mMap.addMarker(options9)
         mMap.addMarker(homesweethome)
     }
 

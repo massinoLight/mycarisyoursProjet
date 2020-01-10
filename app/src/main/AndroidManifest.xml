@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mycarisyours">
-
     <!-- permission pour acceder a internet/Camera/Localisation/Stockage -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- les permissions pour la camera et pour le stockage extern -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".map.MapsActivity"/>
+        <activity android:name=".activites.AfficherDetailVehicule"></activity>
+        <activity android:name=".map.MapsActivity" />
         <activity android:name=".activites.ConfirmerActivity" />
         <activity android:name=".activites.DebutActivity" />
         <activity android:name=".activites.AjouterPhotoActivity" />
@@ -36,14 +37,10 @@
         <activity android:name=".activites.AccueilActivity" />
         <activity android:name=".activites.SigupActivity" />
         <activity android:name=".activites.ChoixActivity" />
-        <activity android:name=".activites.AjouterVoitureActivity" />
-
-
-        <!-- Key de l'API MAP nacerddin.amassin@gmail.com -->
+        <activity android:name=".activites.AjouterVoitureActivity" /> <!-- Key de l'API MAP nacerddin.amassin@gmail.com -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDJ_ksqhO0ofyOU4V1Ir-6E1MRmjPO6kUs"/>
-
+            android:value="AIzaSyDJ_ksqhO0ofyOU4V1Ir-6E1MRmjPO6kUs" />
     </application>
 
 </manifest>

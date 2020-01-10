@@ -240,7 +240,7 @@ class AjoutoitureLastActivity : AppCompatActivity() {
         var c='a'
 
 
-        if (m.length != 9){
+        if (m.length != 7){
 
             bien=false
         }
@@ -292,7 +292,7 @@ class AjoutoitureLastActivity : AppCompatActivity() {
             }
 
             //on verifie les deux chiffres du département
-            c=m.get(7)
+           /* c=m.get(7)
             if (!chiffre(c)){
                 bien=false
 
@@ -302,7 +302,7 @@ class AjoutoitureLastActivity : AppCompatActivity() {
             if (!chiffre(c)){
                 bien=false
 
-            }
+            }*/
 
         }
 

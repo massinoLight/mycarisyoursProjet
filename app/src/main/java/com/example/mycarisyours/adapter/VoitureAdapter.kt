@@ -14,10 +14,8 @@ import java.time.LocalDate
 import java.util.ArrayList
 
 
-data class Voiture(val marque:String?, val modele:String?, val energie:String?, val vitesse:String?
-                   , val places:String?, val portes:String?, val fumeur:String?, val animaux:String?
-                   , val description:String?, val matricule:String?, val dateDeb: String?, val datefin: String?,
-                   val prix:String?,val photo1:String?,val photo2:String?,val photo3:String?,val photo4:String?,val IMAGE: Bitmap?)
+data class Voiture(val marque:String?, val modele:String?, val description:String?, val matricule:String?,
+                   val prix:String?,val IMAGE: Bitmap?)
 
 class VoitureAdapter(val voitureAAfficher: Array<Voiture>, val listener: (Voiture)-> Unit):
     RecyclerView.Adapter<VoitureAdapter.ViewHolder>() {
