@@ -62,7 +62,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         const val hassi_Messaoud_lng= 6.065078
 
 
+        const val noisy_Legrand_lat= 48.846207
+        const val noisy_Legrand_lng= 2.554102
 
+        const val tour_effel_lat= 48.860461
+        const val tour_effel_lng= 2.297380
+
+        const val bobiby_lat= 48.909800
+        const val bobiby_lng= 2.452776
+
+        const val bondy_lat= 48.903386
+        const val bony_lng= 2.484783
 
     }
 
@@ -154,6 +164,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         var options7: MarkerOptions= MarkerOptions()
         var options8: MarkerOptions= MarkerOptions()
         var options9: MarkerOptions= MarkerOptions()
+        var options10: MarkerOptions= MarkerOptions()
+        var options11: MarkerOptions= MarkerOptions()
+        var options12: MarkerOptions= MarkerOptions()
+
         var homesweethome: MarkerOptions= MarkerOptions()
         val sydney = LatLng(lat,lng)
         val laFac = LatLng(saintMauricelat, saintMauricelng)
@@ -168,6 +182,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         val didrot = LatLng(didrot_lat, didrot_lng)
         val upmc = LatLng(upmc_lat, upmc_lng)
 
+        val noisy = LatLng(noisy_Legrand_lat, noisy_Legrand_lng)
+        val bobiny = LatLng(bobiby_lat, bobiby_lng)
+        val bondy = LatLng(bondy_lat, bony_lng)
+        val tour = LatLng(tour_effel_lat, tour_effel_lng)
+
         options.title("vous etes ici")
         options.snippet("snippet")
         options.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
@@ -176,7 +195,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
 
         options1.title("Saint Denis Université")
         options1.snippet("Citroen c5")
-        options1.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options1.icon(BitmapDescriptorFactory.fromResource(R.drawable.veloicon))
         options1.position(laFac)
 
         options2.title("Nanterre")
@@ -191,12 +210,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
 
         options4.title("paris 13eme")
         options4.snippet("Renault twingo")
-        options4.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options4.icon(BitmapDescriptorFactory.fromResource(R.drawable.trotinetteicon))
         options4.position(paris13eme)
 
         options5.title("Paris Didrot")
         options5.snippet("Renault capture")
-        options5.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options5.icon(BitmapDescriptorFactory.fromResource(R.drawable.trotinetteicon))
         options5.position(didrot)
 
         options6.title("Jussieu")
@@ -206,14 +225,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
 
         options7.title("paleseau")
         options7.snippet("DACIA Logan")
-        options7.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options7.icon(BitmapDescriptorFactory.fromResource(R.drawable.utilitaireicon))
         options7.position(paleseau)
 
 
 
         options8.title("Sacré Coeur")
         options8.snippet("Porche Cayenne")
-        options8.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options8.icon(BitmapDescriptorFactory.fromResource(R.drawable.motoicon))
         options8.position(sacreCoeur)
 
 
@@ -228,6 +247,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         homesweethome.snippet("Toyota de Maman ")
         homesweethome.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
         homesweethome.position(homeSweetHomepos)
+
+        options9.title("noisy le grand")
+        options9.snippet("utilitaire")
+        options9.icon(BitmapDescriptorFactory.fromResource(R.drawable.utilitaireicon))
+        options9.position(noisy)
+
+
+        options10.title("bobiny")
+        options10.snippet("utilitaire")
+        options10.icon(BitmapDescriptorFactory.fromResource(R.drawable.voitureicon))
+        options10.position(bobiny)
+
+        options11.title("bondy")
+        options11.snippet("trottinette")
+        options11.icon(BitmapDescriptorFactory.fromResource(R.drawable.utilitaireicon))
+        options11.position(bondy)
+
+
+        options12.title("tour eiffel")
+        options12.snippet("trottinette")
+        options12.icon(BitmapDescriptorFactory.fromResource(R.drawable.trotinetteicon))
+        options12.position(tour)
 
 
 
@@ -244,6 +285,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleApiClient.Con
         mMap.addMarker(options7)
         mMap.addMarker(options8)
         mMap.addMarker(options9)
+        mMap.addMarker(options10)
+        mMap.addMarker(options11)
+        mMap.addMarker(options12)
         mMap.addMarker(homesweethome)
     }
 
